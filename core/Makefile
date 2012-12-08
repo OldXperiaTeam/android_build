@@ -12,14 +12,7 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_RST="\033[0m"
 endif
 
-# Pick a reasonable string to use to identify files.
-ifneq "" "$(filter eng.%,$(BUILD_NUMBER))"
-  # BUILD_NUMBER has a timestamp in it, which means that
-  # it will change every time.  Pick a stable value.
-  FILE_NAME_TAG := eng.$(USER)
-else
-  FILE_NAME_TAG := $(BUILD_NUMBER)
-endif
+FILE_NAME_TAG := v$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(PRODUCT_BUILDTYPE)_$(PRODUCT_VERSION_DEVICE_SPECIFIC)
 
 is_tests_build := $(filter tests,$(MAKECMDGOALS))
 
@@ -1286,11 +1279,7 @@ ifneq ($(recovery_fstab),)
 # -----------------------------------------------------------------
 # OTA update package
 
-name := $(TARGET_PRODUCT)
-ifeq ($(TARGET_BUILD_TYPE),debug)
-  name := $(name)_debug
-endif
-name := $(name)-ota-$(FILE_NAME_TAG)
+name := $(PRODUCT_MODEL)_JBMP42_$(FILE_NAME_TAG)
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 
