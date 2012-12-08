@@ -646,7 +646,9 @@ endif
 RECOVERY_RESOURCE_ZIP := $(TARGET_OUT)/etc/recovery-resource.dat
 
 ifeq ($(recovery_resources_private),)
-  $(info No private recovery resources for TARGET_DEVICE $(TARGET_DEVICE))
+    ifeq ($(ALL_WARNINGS),true)
+        $(info No private recovery resources for TARGET_DEVICE $(TARGET_DEVICE))
+    endif
 endif
 
 ifeq ($(recovery_fstab),)
