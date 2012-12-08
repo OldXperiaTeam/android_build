@@ -19,6 +19,12 @@
 
 PRODUCT_POLICY := android.policy_phone
 
+ifneq ($(BOARD_HAS_SMALL_SYSTEM_PARTITION),true)
+PRODUCT_PACKAGES := \
+    Email2 \
+    Exchange2
+endif
+
 PRODUCT_PACKAGES := \
     DeskClock \
     Bluetooth \
@@ -26,8 +32,6 @@ PRODUCT_PACKAGES := \
     Calendar \
     CertInstaller \
     DrmProvider \
-    Email2 \
-    Exchange2 \
     FusedLocation \
     Gallery2 \
     InputDevices \
