@@ -12,7 +12,7 @@ ifneq ($(BUILD_WITH_COLORS),0)
   CL_RST="\033[0m"
 endif
 
-FILE_NAME_TAG := $(PRODUCT_BUILDTYPE)_$(PRODUCT_VERSION_DEVICE_SPECIFIC)
+FILE_NAME_TAG := $(PRODUCT_BUILDTYPE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)
 
 is_tests_build := $(filter tests,$(MAKECMDGOALS))
 
@@ -1282,7 +1282,7 @@ ifneq ($(recovery_fstab),)
 # -----------------------------------------------------------------
 # OTA update package
 
-name := $(PRODUCT_MODEL)_JBMP42_$(FILE_NAME_TAG)
+name := $(PRODUCT_MODEL)_JBMP42-$(FILE_NAME_TAG)
 
 INTERNAL_OTA_PACKAGE_TARGET := $(name).zip
 
